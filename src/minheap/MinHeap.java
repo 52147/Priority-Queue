@@ -106,7 +106,9 @@ public class MinHeap {
 	
 	public MinHeap(int heapSize) {
 		this.heapSize = heapSize;
-		minHeap = new int[heapSize + 1];
+		minHeap = new int[heapSize + 1]; // can not write this -> int[] minHeap = new int[heapSize + 1]; => NullPointerException
+		                                 // because this mean we create a new array in the method
+		                                 // and not create the instance of data member minHeap.
 		
 		// To better track the indices of the binary tree, 
 		// we will not use the 0-th element in the array
