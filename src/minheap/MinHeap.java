@@ -224,7 +224,7 @@ public class MinHeap {
 			
 			sb.append('[');
 			
-			for(int i = 1; i <= realSize; i++) {
+			for(int i = 1; i <= realSize; i++) { // pay attention to <=
 				sb.append(minHeap[i]);
 				sb.append(',');
 			}

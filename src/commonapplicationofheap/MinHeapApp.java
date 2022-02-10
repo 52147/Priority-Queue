@@ -39,7 +39,7 @@ public class MinHeapApp {
 		System.out.println("minHeap size: " + heapSize);
 		
 		// Check if the Min Heap is empty
-		boolean isEmpty = minHeap.isEmpty();
+		boolean isEmpty = minHeap.isEmpty(); // return size() == 0;
 		
 		// The result is false
 		System.out.println("isEmpty: " + isEmpty);
