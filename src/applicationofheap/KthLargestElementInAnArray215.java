@@ -237,28 +237,35 @@ public class KthLargestElementInAnArray215 {
 	
 	public int findKthLargest(int[] nums, int k) {
 		
+		
+		// use K-the element problem approach 2
+		
 		// init heap "the smallest element first"
-		PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2); // The constructor accepts a Comparator<? super E> comparator
+		PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2); // ascending order // The constructor accepts a Comparator<? super E> comparator
 		// n1.compareTo(n2)
 		// n1 - n2
 		// result is negative -> n1 is smaller
 		// result is 0        -> n1 and n2 are the same
 		// result is positive -> n1 is greater
 		
+		// descending order: (a, b) -> b - a
+		
 		// keep k largest elements in the heap
 		for(int n: nums) {
 			heap.add(n);
 			
-			if(heap.size() > k) {
-				heap.poll();
+			if(heap.size() > k) { // if the element in the minHeap is larger than k, we poll the first element
+				heap.poll(); // keep the min heap size as k elements
 			}
 			
 			
 		}
 		
+		// when this for loop is done(the all element is add in the heap), now the heap has the top k largest elements
+		
 		
 		// output
-		return heap.poll();
+		return heap.poll();  // we need to poll again to get the k-th largest element
 		
 	}
 

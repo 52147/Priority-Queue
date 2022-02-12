@@ -87,13 +87,122 @@ package applicationofheap;
  *   - The heap will contain at most K elements at any given time. 
  */
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * 
  * 
  *  = 347. Top K frequent elements =
+ *  
+ *  Approach 1: Heap
+ *  
+ *  - Let's start from the simple heap approach with O(N log k) time complexity.
+ *  - To ensure that O(N log k) is always less than O(N log N),
+ *    the particular case k = N could be considered separately and solved in O(N) time.
+ *    
+ *  Algorithm:
+ *  
+ *  1.
+ *  - The first step is to build a hash map element -> its frequency.
+ *  - In Java, we use the data structure HashMap.
+ *  
+ *  - Python provides dictionary subclass Counter to initialize the hash map we need directly from the input array.
+ *  - This step takes O(N) time where N is a number of elements in the list.
+ *  
+ *  2. 
+ *  - The second step is to build a heap of size k using N elements.
+ *  - To add the first k elements takes a linear time O(k) in the average case,
+ *    and O(log1 + log2 +...+ logk) = O(logk!) = O(k log k) in the worst case.
+ *  - It's equivalent to heapify implementation in Python.
+ *  
+ *  - After the first k elements we start to push and pop at each step,
+ *    N - k steps in total.
+ *  - The time complexity of heap push/pop is O(log k) and we do it N - k times
+ *    that means O((N - k) log k) time complexity.
+ *  - Adding both parts up, we get O(N log k) time complexity for the second step.
+ *  
+ *  3. 
+ *  - The third and the last step is to convert the heap into an output array.
+ *  - That could be done in O(k log k) time.  
+ *  
+ *  
+ *  In Python, library heapq provides a method nlargest, 
+ *  which combined the last two steps under the hood and has the same O(N log k) time complexity.
  * 
+ * 
+ *  1. build hashmap "element --> its frequency"
+ *  2. build heap of k most frequent elements
+ *  3. build an output array
  *
  */
 public class TopKFrequentElements347 {
+	
+	public int[] topKFrequent(int[] nums, int k) {
+		
+		// O(1) time
+		if(k == nums.length) {
+			return nums;
+		}
+		
+		// 1. build hash map: character and how often it appears
+		// O(N) time
+		Map<Integer, Integer> count = new HashMap();
+		for(int n: nums) {
+			count.put(n, count.getOrDefault(n, 0) + 1);
+			
+		}
+		
+		// init heap 'the less frequent element first'
+		Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
+		
+		
+		// 2. keep k top frequent elements in the heap
+		// O(N log k) < O(N log N) time
+		for(int n: count.keySet()) {
+			heap.add(n);
+			if(heap.size() > k) {
+				heap.poll();
+			}
+		}
+		
+		// 3. build an output array
+		// O(k log k) time
+		int[] top = new int [k];
+		
+		
+		// the frequencies is large to small order in the array
+		for(int i = k - 1; i >= 0; --i) {
+			top[i] = heap.poll();
+			
+		}
+		
+		return top;
+		
+		
+		
+		
+	}
 
 }
+/**
+ * Complexity analysis:
+ * 
+ *  - Time complexity: O(N log k)
+ *    - if k < N and O(N) in the particular case of N = k.
+ *    - That ensures time complexity to be better than O(N log N).
+ *    
+ *  - Space complexity: O(N + k)
+ *    - to store the hash map with not more N elements and a heap with k elements.
+ * 
+ * 
+ * 
+ */
+
+
+
+
+
+
