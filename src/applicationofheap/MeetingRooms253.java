@@ -90,6 +90,8 @@ public class MeetingRooms253 {
 		}
 		
 		// Min Heap
+		// Initial the priority queue capacity with interval length
+		// and a comparator instance with the parameter a, b
 		PriorityQueue<Integer> allocator = 
 				new PriorityQueue<Integer>(
 						intervals.length, new Comparator<Integer>() {
