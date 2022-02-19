@@ -61,7 +61,8 @@ import java.util.PriorityQueue;
 public class MinimumCostToConnectSticks1167 {
 	
 	
-	public int connectSticks(int[] sticks) {
+	public int connectSticks(int[] sticks) {		
+		
 		int minTotalCost = 0;
 		
 		
@@ -72,9 +73,10 @@ public class MinimumCostToConnectSticks1167 {
 			pq.add(stick);
 		}
 		
-		
+		// O(N-1 log N)  (N - 1) because we will perform (N-1)times poll and add operations until left with one element in the priority queue
 		// combine two of the smallest stick until we are left with just one.
 		while(pq.size() > 1) {
+			
 			int stick1 = pq.poll();
 			int stick2 = pq.poll();
 			
@@ -83,6 +85,7 @@ public class MinimumCostToConnectSticks1167 {
 			minTotalCost += cost;
 			
 			pq.add(cost);
+			
 		}
 		
 		
@@ -112,8 +115,4 @@ public class MinimumCostToConnectSticks1167 {
  * 
  * 
  */
-
-
-
-
 

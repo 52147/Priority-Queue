@@ -17,22 +17,26 @@ import java.util.PriorityQueue;
  * MinHeap:
  * 
  * - Heap Sort sorts a group of unordered elements using the Heap data structure.
+ * 
  * - The sorting algorithm using a Min Heap is as follow:
- *   - 1. Heapify all elements into a Min Heap
- *   - 2. Record and delete the top element
- *   - 3. Put the top element into an array T that stores all sorted elements
- *        Now, the Heap will remain a Min Heap
+ * 
+ *   - 1. Heapify all elements into a Min Heap.
+ *   - 2. Record and delete the top elements.
+ *   - 3. Put the top element into an array T that stores all sorted elements.
+ *        Now, the Heap will remain a Min Heap.
  *   - 4. Repeat step 2 and 3 until the Heap is empty.
  *        The array T will contain all elements sorted in ascending order.
  * 
  * Max Heap:
- * - The sorting alogorithm using a Max Heap is as follow:
- *   1. Heapify all elements into a Max Heap
- *   2. Record and delete the top element
- *   3. Put the top element into an array T that stores all sorted elements.
- *      Now, the Heap will remain a Max Heap.
- *   4. Repeat steps 2 and 3 until the Heap is empty.
- *      The array T will contain all elements sorted in descending order.
+ * 
+ * - The sorting algorithm using a Max Heap is as follow:
+ * 
+ *   - 1. Heapify all elements into a Max Heap.
+ *   - 2. Record and delete the top element.
+ *   - 3. Put the top element into an array T that stores all sorted elements.
+ *        Now, the Heap will remain a Max Heap.
+ *   - 4. Repeat steps 2 and 3 until the Heap is empty.
+ *        The array T will contain all elements sorted in descending order.
  *      
  * Complexity Analysis:
  * 

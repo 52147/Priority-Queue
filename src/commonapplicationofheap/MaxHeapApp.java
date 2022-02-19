@@ -1,6 +1,7 @@
 package commonapplicationofheap;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class MaxHeapApp {
@@ -9,6 +10,7 @@ public class MaxHeapApp {
 		
 		// Construct an instance of Max Heap
 		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+		PriorityQueue<Integer> maxHeap1 = new PriorityQueue<>(Comparator.reverseOrder());
 		PriorityQueue<Integer> maxHeap2 = new PriorityQueue<>((a, b) -> b - a); // descending order
 		PriorityQueue<Integer> maxHeap3 = new PriorityQueue<>((a, b) -> b.compareTo(a));
 		
